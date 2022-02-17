@@ -1,16 +1,26 @@
 class Atlas < Formula
   desc "A database toolkit"
   homepage "https://atlasgo.io"
-  version "0.3.4-58903ceb01e5-canary"
+
+  # technique to pull sha and version from HTTP inspired by: https://github.com/pointlessone/homebrew-rust-nightly
+  def self.sha256_checksum (platform)
+    `curl --silent https://release.ariga.io/atlas/atlas-#{platform}-amd64-latest.zip.sha256`.split.first
+  end
+
+  def self.version (platform)
+     `curl --silent https://release.ariga.io/atlas/atlas-${platform}-amd64-latest.version`
+  end
 
   if OS.mac?
     url "https://release.ariga.io/atlas/atlas-darwin-amd64-latest.zip"
-    sha256 "f8b2bdc45bc1a1a0764685ac47c45b5d2d112742e971e9df95409a369259b0b4"
+    sha256 self.sha256_checksum "darwin"
+    version self.version "darwin"
   end
 
   if OS.linux?
     url "https://release.ariga.io/atlas/atlas-linux-amd64-latest.zip"
-    sha256 "35cb3a1ab3ebf731b7b9bfd0368c53da7600c5c6814a291b639786c647cce22f"
+    sha256 self.sha256_checksum "linux"
+    version self.version "linux"
   end
 
   def install
