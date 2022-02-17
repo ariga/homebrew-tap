@@ -9,7 +9,7 @@ class Atlas < Formula
   end
 
   if OS.linux?
-    url "https://release.ariga.io/atlas/atlas-linx-amd64-latest.zip"
+    url "https://release.ariga.io/atlas/atlas-linux-amd64-latest.zip"
     sha256 "35cb3a1ab3ebf731b7b9bfd0368c53da7600c5c6814a291b639786c647cce22f"
   end
 
