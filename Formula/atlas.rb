@@ -8,7 +8,7 @@ class Atlas < Formula
   end
 
   def self.version (platform)
-     `curl --silent https://release.ariga.io/atlas/atlas-${platform}-amd64-latest.version`
+     `curl --silent https://release.ariga.io/atlas/atlas-#{platform}-amd64-latest.version`
   end
 
   if OS.mac?
