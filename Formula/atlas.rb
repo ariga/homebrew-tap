@@ -7,20 +7,20 @@ class Atlas < Formula
     `curl --silent https://release.ariga.io/atlas/atlas-#{platform}-amd64-latest.zip.sha256`.split.first
   end
 
-  def self.version (platform)
-     `curl --silent https://release.ariga.io/atlas/atlas-${platform}-amd64-latest.version`
+  def self.latest_version (platform)
+     `curl --silent https://release.ariga.io/atlas/atlas-#{platform}-amd64-latest.version`.split.first
   end
 
   if OS.mac?
     url "https://release.ariga.io/atlas/atlas-darwin-amd64-latest.zip"
     sha256 self.sha256_checksum "darwin"
-    version self.version "darwin"
+    version self.latest_version "darwin"
   end
 
   if OS.linux?
     url "https://release.ariga.io/atlas/atlas-linux-amd64-latest.zip"
     sha256 self.sha256_checksum "linux"
-    version self.version "linux"
+    version self.latest_version "linux"
   end
 
   def install
