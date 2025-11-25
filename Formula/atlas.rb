@@ -29,7 +29,5 @@ class Atlas < Formula
 
   def install
     bin.install "atlas"
-
-    generate_completions_from_executable(bin/"atlas", "completion")
   end
 end
